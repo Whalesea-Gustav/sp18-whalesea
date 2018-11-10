@@ -5,6 +5,7 @@ public class DebugExercise3 {
     public static int countTurnips(In in) {
         int totalTurnips = 0;
         while (!in.isEmpty()) {
+
             String vendor = in.readString();
             String foodType = in.readString();
             double cost = in.readDouble();
