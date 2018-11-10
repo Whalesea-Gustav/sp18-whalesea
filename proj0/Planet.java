@@ -9,7 +9,7 @@ public class Planet {
 
 	public String imgFileName;
 
-	private double G = 6.67e-11;
+	private static double G = 6.67e-11;
 
 	public Planet(double xP, double yP, double xV, 
 				  double yV, double m, String img) {
@@ -33,20 +33,28 @@ public class Planet {
 
 	}
 	public double calcDistance(Planet p) {
-		return (Math.sqrt(Math.pow((this.xxPos-p.xxPos),2) 
-			    + Math.pow((this.xxPos-p.yyPos), 2)));
+
+		double dx = this.xxPos - p.xxPos;
+		double dy = this.yyPos - p.yyPos;
+
+		double result = Math.sqrt(dx*dx + dy*dy);
+
+		return result;
+
 	}
 
 	public double calcForceExertedBy(Planet p) {
-		return (this.G * this.mass * p.mass
+		return (G * this.mass * p.mass
 				/ Math.pow((this.calcDistance(p)), 2)); 
 	} 
 
 	public double calcForceExertedByX(Planet p) {
-		return (this.calcForceExertedBy(p) * (p.xxPos - this.xxPos) / this.calcDistance(p));
+		return (this.calcForceExertedBy(p) * (p.xxPos - this.xxPos) 
+			    / this.calcDistance(p));
 	}
 	public double calcForceExertedByY(Planet p) {
-		return (this.calcForceExertedBy(p) * (p.yyPos - this.yyPos) / this.calcDistance(p));
+		return (this.calcForceExertedBy(p) * (p.yyPos - this.yyPos) 
+			    / this.calcDistance(p));
 	}
 
 	public double calcNetForceExertedByX(Planet[] allPlanets) {
@@ -57,6 +65,7 @@ public class Planet {
 			if (this.equals(p)){
 
 				continue;
+
 			} else {
 				netForce += this.calcForceExertedByX(p);
 			}
@@ -72,9 +81,11 @@ public class Planet {
 		for (Planet p : allPlanets) {
 
 			if (this.equals(p)) {
+
 				continue;
+
 			} else {
-			netForce += this.calcForceExertedByY(p);
+				netForce += this.calcForceExertedByY(p);
 			}
 		}
 

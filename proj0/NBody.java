@@ -6,7 +6,7 @@ public class NBody {
 		return R;
 	}
 	/** read the number of planets in file */
-	public static int readNumber(String path) {
+	private static int readNumber(String path) {
 		In in = new In(path);
 
 		return in.readInt();
@@ -35,6 +35,7 @@ public class NBody {
 		return result;
 
 	}
+
 
 
 
