@@ -1,8 +1,13 @@
+/** Deque built in LinkedList.*/
 public class LinkedListDeque<T> {
-    public LinkedListDeque<T> prev;
-    public T item;
-    public LinkedListDeque<T> next;
-    public int size;
+    /**pointer to prev deque*/
+    private LinkedListDeque<T> prev;
+    /** element storing T value.*/
+    private T item;
+    /**pointer to next deque.*/
+    private LinkedListDeque<T> next;
+    /**deque size.*/
+    private int size;
 
     public LinkedListDeque() {
 
@@ -14,7 +19,7 @@ public class LinkedListDeque<T> {
 
     }
 
-    public LinkedListDeque(T i) {
+    private LinkedListDeque(T i) {
         LinkedListDeque<T> temp = new LinkedListDeque<>();
         temp.item = i;
         this.item = null;
@@ -75,14 +80,17 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
+        this.sizeMinusOneAux();
         T result = this.next.item;
         this.next = this.next.next;
         this.next.prev = this;
+
 
         return result;
     }
 
     public T removeLast() {
+        this.sizeMinusOneAux();
         T result = this.prev.item;
         this.prev = this.prev.prev;
         this.prev.next = this;
@@ -108,61 +116,17 @@ public class LinkedListDeque<T> {
         if (index == 0) {
             return this.next.item;
         } else {
-            return this.next.getRecursive(index-1);
+            return this.next.getRecursive(index - 1);
 
         }
     }
 
-    /*
-    public static void main(String[] args){
-        LinkedListDeque<Integer> deque1 = new LinkedListDeque<>(10);
-        deque1.addFirst(0);
-        System.out.println(deque1.item);
-        System.out.println(deque1.next.item);
-        System.out.println(deque1.next.next.item);
-        System.out.println(deque1.next.next.next.item);
-
-        System.out.println("------------------");
-        System.out.println(deque1.get(0));
-        System.out.println(deque1.get(1));
-
-        System.out.println("-----getIterative-----");
-        deque1.addLast(20);
-        System.out.println(deque1.get(0));
-        System.out.println(deque1.get(1));
-        System.out.println(deque1.get(2));
-        System.out.println(deque1.get(3));
-        System.out.println(deque1.size());
-
-        System.out.println("-----getRecursive-----");
-        System.out.println(deque1.getRecursive(0));
-        System.out.println(deque1.getRecursive(1));
-        System.out.println(deque1.getRecursive(2));
-        System.out.println(deque1.getRecursive(3));
-        System.out.println(deque1.size());
-
-        System.out.println("------------------");
-
-        deque1.printDeque();
-
-        System.out.println("------------------");
-        System.out.println(deque1.removeFirst());
-        deque1.printDeque();
-
-        System.out.println("------------------");
-        LinkedListDeque<Integer> deque2 = new LinkedListDeque<>(10);
-        deque2.printDeque();
-
-        System.out.println("------------------");
-        deque1.printDeque();
-        System.out.println(deque1.removeLast());
-        deque1.printDeque();
-
-        System.out.println("------------------");
-        System.out.println(deque1.isEmpty());
-        deque1.removeLast();
-        System.out.println(deque1.isEmpty());
-
+    private void sizeMinusOneAux() {
+        if (this.size > 0) {
+            this.size--;
+        } else {
+            return;
+        }
     }
-    */
 }
+
