@@ -1,12 +1,8 @@
 /** Deque built in LinkedList.*/
 public class LinkedListDeque<T> {
-    /**pointer to prev deque*/
     private LinkedListDeque<T> prev;
-    /** element storing T value.*/
     private T item;
-    /**pointer to next deque.*/
     private LinkedListDeque<T> next;
-    /**deque size.*/
     private int size;
 
     public LinkedListDeque() {
@@ -36,16 +32,11 @@ public class LinkedListDeque<T> {
     public void addFirst(T i) {
         LinkedListDeque<T> temp = new LinkedListDeque<>();
         temp.item = i;
-
         temp.next = this.next;
         this.next.prev = temp;
-
         this.next = temp;
         temp.prev = this;
-
         this.size++;
-
-
     }
 
     public void addLast(T i) {
@@ -61,11 +52,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (this.next.item == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.next.item == null);
     }
 
     public void printDeque() {
@@ -84,8 +71,6 @@ public class LinkedListDeque<T> {
         T result = this.next.item;
         this.next = this.next.next;
         this.next.prev = this;
-
-
         return result;
     }
 
@@ -127,6 +112,7 @@ public class LinkedListDeque<T> {
         } else {
             return;
         }
-    }
-}
 
+    }
+
+}

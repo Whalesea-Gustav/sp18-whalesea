@@ -12,11 +12,11 @@ public class ArrayDeque<T> {
         /*this.nextFirst == this.nextLast*/
         /*this.size == this.items.length - 1*/
         if (this.size == this.items.length - 1) {
-           this.resize(this.items.length * 2);
+            this.resize(this.items.length * 2);
         }
         this.size++;
         this.items[this.nextFirst] = i;
-        this.nextFirstMinusOne(); // if exceed, flag == 0;
+        this.nextFirstMinusOne();
     }
     private void nextFirstMinusOne() {
         if (this.nextFirst == 0) {
@@ -59,22 +59,17 @@ public class ArrayDeque<T> {
         this.items = temp;
     }
     public boolean isEmpty() {
-        if (this.size == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.size == 0);
     }
     public T get(int index) {
         if (this.nextFirst < this.nextLast) {
             return this.items[this.nextFirst + index + 1];
-        } else if (this.nextFirst == this.items.length-1) {
+        } else if (this.nextFirst == this.items.length - 1) {
             return this.items[index];
         } else if (index <= (this.items.length - this.nextFirst - 2)) {
             return this.items[index + this.nextFirst + 1];
         } else {
-            return this.items[index -
-                              (this.items.length - this.nextFirst - 1)];
+            return this.items[index - (this.items.length - this.nextFirst - 1)];
         }
     }
     public void printDeque() {
@@ -117,7 +112,7 @@ public class ArrayDeque<T> {
 
         return result;
     }
-    public void nextLastMinusOne() {
+    private void nextLastMinusOne() {
         if (this.nextLast == 0) {
             this.nextLast = this.items.length;
         } else {
@@ -133,17 +128,20 @@ public class ArrayDeque<T> {
             result = this.items[this.nextFirst];
             this.size--;
         }
-        if(this.size * 4 <= this.items.length) {
+        if (this.size * 4 <= this.items.length) {
             this.resize(this.size * 2);
         }
         return result;
     }
-    public void nextFirstAddOne() {
+    private void nextFirstAddOne() {
         if (this.nextFirst == this.items.length - 1) {
             this.nextFirst = 0;
         } else {
             this.nextFirst++;
         }
+    }
+    public int size() {
+        return this.size();
     }
 
   /*  public static void main(String[] args) {
