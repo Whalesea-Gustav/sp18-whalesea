@@ -52,12 +52,16 @@ public class ArrayDeque<T> {
             System.arraycopy(this.items, 0,
                     temp, 0, this.nextLast);
             this.nextFirst += dif;
+
             if (this.nextFirst == capacity - 1) {
+                this.items = temp;
             } else {
                 System.arraycopy(this.items, this.nextFirst - dif + 1,
                         temp, this.nextFirst + 1, capacity - 1 - this.nextFirst);
+                this.items = temp;
             }
-            this.items = temp;
+
+
         } else if (this.nextFirst < this.nextLast) {
             T[] temp = (T[]) new Object[capacity];
             System.arraycopy(this.items, this.nextFirst + 1,
@@ -143,7 +147,8 @@ public class ArrayDeque<T> {
         }
         return result;
     }
-    private void nextFirstAddOne() { if (this.nextFirst == this.items.length - 1) { this.nextFirst = 0;
+    private void nextFirstAddOne() {
+        if (this.nextFirst == this.items.length - 1) { this.nextFirst = 0;
         } else {
             this.nextFirst++;
         }
@@ -270,42 +275,42 @@ public class ArrayDeque<T> {
 //        deque.printDeque();
 //    }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        deque.addFirst(0);
-        deque.printDeque();
-        deque.get(0);
-        deque.get(0);
-        deque.removeFirst();
-        deque.printDeque();
-        deque.addLast(4);
-        deque.printDeque();
-        deque.removeLast();
-        deque.printDeque();
-        deque.addFirst(6);
-        deque.printDeque();
-        deque.get(0);
-        deque.addLast(8);
-        deque.printDeque();
-        deque.addFirst(9);
-        deque.printDeque();
-        deque.addFirst(10);
-        deque.printDeque();
-        deque.addLast(11);
-        deque.printDeque();
-        deque.removeLast();
-        deque.printDeque();
-        deque.addFirst(13);
-        deque.printDeque();
-        deque.addLast(14);
-        deque.printDeque();
-        deque.get(2);
-        deque.addFirst(16);
-        deque.printDeque();
-        System.out.println(deque.get(3));
-        deque.addLast(18);
-        deque.printDeque();
-        deque.removeFirst();
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> deque = new ArrayDeque<>();
+//        deque.addFirst(0);
+//        deque.printDeque();
+//        deque.get(0);
+//        deque.get(0);
+//        deque.removeFirst();
+//        deque.printDeque();
+//        deque.addLast(4);
+//        deque.printDeque();
+//        deque.removeLast();
+//        deque.printDeque();
+//        deque.addFirst(6);
+//        deque.printDeque();
+//        deque.get(0);
+//        deque.addLast(8);
+//        deque.printDeque();
+//        deque.addFirst(9);
+//        deque.printDeque();
+//        deque.addFirst(10);
+//        deque.printDeque();
+//        deque.addLast(11);
+//        deque.printDeque();
+//        deque.removeLast();
+//        deque.printDeque();
+//        deque.addFirst(13);
+//        deque.printDeque();
+//        deque.addLast(14);
+//        deque.printDeque();
+//        deque.get(2);
+//        deque.addFirst(16);
+//        deque.printDeque();
+//        System.out.println(deque.get(3));
+//        deque.addLast(18);
+//        deque.printDeque();
+//        deque.removeFirst();
+//    }
 
 }
