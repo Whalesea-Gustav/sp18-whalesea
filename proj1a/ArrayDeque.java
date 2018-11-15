@@ -1,3 +1,4 @@
+/**deque built in Array.*/
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
@@ -42,22 +43,32 @@ public class ArrayDeque<T> {
             this.nextLast++;
         }
     }
-    public void resize(int capacity) {
-        T[] temp = (T[]) new Object[capacity];
-        //calculate the difference between capacity and items length
-        // in case of capacity is less than items length
-        int dif = capacity - this.items.length;
-        System.arraycopy(this.items, 0,
-                               temp, 0, this.nextLast);
-        this.nextFirst += dif;
-        if (this.nextFirst == capacity - 1) {
-            return;
-        } else {
-            System.arraycopy(this.items, this.nextFirst - dif + 1,
-                             temp, this.nextFirst + 1, capacity - 1 - this.nextFirst);
+    private void resize(int capacity) {
+        if (this.nextFirst >= this.nextLast) {
+            T[] temp = (T[]) new Object[capacity];
+            //calculate the difference between capacity and items length
+            // in case of capacity is less than items length
+            int dif = capacity - this.items.length;
+            System.arraycopy(this.items, 0,
+                    temp, 0, this.nextLast);
+            this.nextFirst += dif;
+            if (this.nextFirst == capacity - 1) {
+                return;
+            } else {
+                System.arraycopy(this.items, this.nextFirst - dif + 1,
+                        temp, this.nextFirst + 1, capacity - 1 - this.nextFirst);
+            }
+            this.items = temp;
+        } else if (this.nextFirst < this.nextLast) {
+            T[] temp = (T[]) new Object[capacity];
+            System.arraycopy(this.items, this.nextFirst + 1,
+                    temp, 1, this.size);
+            this.nextFirst = 0;
+            this.nextLast = this.size + 1;
+            this.items = temp;
         }
-        this.items = temp;
     }
+
     public boolean isEmpty() {
         return (this.size == 0);
     }
@@ -82,7 +93,7 @@ public class ArrayDeque<T> {
             System.out.print("\n");
         } else if (this.nextFirst == this.items.length - 1) {
             for (int i = 0; i < this.nextLast; i++) {
-                System.out.print(this.items[i]);
+                System.out.print(this.items[i] + " ");
             }
             System.out.print("\n");
         } else {
@@ -128,7 +139,7 @@ public class ArrayDeque<T> {
             result = this.items[this.nextFirst];
             this.size--;
         }
-        if (this.size * 4 <= this.items.length) {
+        if ((this.size * 4 <= this.items.length) && (this.items.length >= 16)) {
             this.resize(this.size * 2);
         }
         return result;
@@ -141,7 +152,7 @@ public class ArrayDeque<T> {
         }
     }
     public int size() {
-        return this.size();
+        return this.size;
     }
 
   /*  public static void main(String[] args) {
@@ -220,5 +231,14 @@ public class ArrayDeque<T> {
         deque5.removeLast();
         System.out.println(deque5.isEmpty());
     }*/
+
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> deque = new ArrayDeque<>();
+//        deque.addFirst(0);
+//        deque.addFirst(1);
+//        deque.addFirst(2);
+//        deque.removeFirst();
+//        deque.printDeque();
+//    }
 
 }
