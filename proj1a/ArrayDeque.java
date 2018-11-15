@@ -68,7 +68,6 @@ public class ArrayDeque<T> {
             this.items = temp;
         }
     }
-
     public boolean isEmpty() {
         return (this.size == 0);
     }
@@ -123,9 +122,10 @@ public class ArrayDeque<T> {
 
         return result;
     }
+
     private void nextLastMinusOne() {
         if (this.nextLast == 0) {
-            this.nextLast = this.items.length;
+            this.nextLast = this.items.length - 1;
         } else {
             this.nextLast--;
         }
@@ -144,9 +144,7 @@ public class ArrayDeque<T> {
         }
         return result;
     }
-    private void nextFirstAddOne() {
-        if (this.nextFirst == this.items.length - 1) {
-            this.nextFirst = 0;
+    private void nextFirstAddOne() { if (this.nextFirst == this.items.length - 1) { this.nextFirst = 0;
         } else {
             this.nextFirst++;
         }
@@ -155,82 +153,82 @@ public class ArrayDeque<T> {
         return this.size;
     }
 
-  /*  public static void main(String[] args) {
-        *//*
-        ArrayDeque<Integer> deque1 = new ArrayDeque<>();
-        deque1.addFirst(4);
-        deque1.addFirst(3);
-        deque1.addFirst(2);
-        deque1.addFirst(1);
-        deque1.addFirst(0);
-        deque1.addFirst(5);
-        deque1.addFirst(6);
-        deque1.addFirst(7);
-        deque1.addFirst(10 );
-        System.out.println("------get()------");
-        System.out.println(deque1.get(0));
-        System.out.println(deque1.get(1));
-        System.out.println(deque1.get(2));
-        System.out.println(deque1.get(3));
-        System.out.println(deque1.get(4));
-        System.out.println(deque1.get(5));
-        System.out.println(deque1.get(6));
-        System.out.println(deque1.get(7));
-        System.out.println(deque1.get(8));
-        System.out.println(deque1.get(9));
-        *//*
-        *//*
-        ArrayDeque<Integer> deque2 = new ArrayDeque<>();
-        deque2.addLast(0);
-        deque2.addLast(1);
-        deque2.addLast(2);
-        deque2.addLast(3);
-        deque2.addLast(4);
-        deque2.addFirst(5);
-        deque2.addFirst(6);
-        deque2.addFirst(7);
-        deque2.addFirst(8);
-        deque2.addFirst(9);
-        System.out.println(deque2.get(0));
-        System.out.println(deque2.get(1));
-        System.out.println(deque2.get(2));
-        System.out.println(deque2.get(3));
-        System.out.println(deque2.get(4));
-        System.out.println(deque2.get(5));
-        System.out.println(deque2.get(6));
-        System.out.println(deque2.get(7));
-        System.out.println(deque2.get(8));
-        System.out.println(deque2.get(9));
-        System.out.println(deque2.get(10));
-        *//*
-        *//*
-        ArrayDeque<Integer> deque3 = new ArrayDeque<>();
-        System.out.println(deque3.isEmpty());
-        deque3.addLast(10);
-        System.out.println(deque3.isEmpty());
-        *//*
-
-        *//*
-        ArrayDeque<Integer> deque4 = new ArrayDeque<>();
-        deque4.addLast(0);
-        deque4.addLast(1);
-        deque4.addLast(2);
-        deque4.addLast(3);
-        deque4.addLast(4);
-        deque4.addFirst(5);
-        deque4.addFirst(6);
-        deque4.addFirst(7);
-        deque4.addFirst(8);
-        deque4.printDeque();
-        *//*
-
-
-        ArrayDeque<Integer> deque5 = new ArrayDeque<>();
-        deque5.addFirst(10);
-        deque5.printDeque();
-        deque5.removeLast();
-        System.out.println(deque5.isEmpty());
-    }*/
+//  /*  public static void main(String[] args) {
+//        *//*
+//        ArrayDeque<Integer> deque1 = new ArrayDeque<>();
+//        deque1.addFirst(4);
+//        deque1.addFirst(3);
+//        deque1.addFirst(2);
+//        deque1.addFirst(1);
+//        deque1.addFirst(0);
+//        deque1.addFirst(5);
+//        deque1.addFirst(6);
+//        deque1.addFirst(7);
+//        deque1.addFirst(10 );
+//        System.out.println("------get()------");
+//        System.out.println(deque1.get(0));
+//        System.out.println(deque1.get(1));
+//        System.out.println(deque1.get(2));
+//        System.out.println(deque1.get(3));
+//        System.out.println(deque1.get(4));
+//        System.out.println(deque1.get(5));
+//        System.out.println(deque1.get(6));
+//        System.out.println(deque1.get(7));
+//        System.out.println(deque1.get(8));
+//        System.out.println(deque1.get(9));
+//        *//*
+//        *//*
+//        ArrayDeque<Integer> deque2 = new ArrayDeque<>();
+//        deque2.addLast(0);
+//        deque2.addLast(1);
+//        deque2.addLast(2);
+//        deque2.addLast(3);
+//        deque2.addLast(4);
+//        deque2.addFirst(5);
+//        deque2.addFirst(6);
+//        deque2.addFirst(7);
+//        deque2.addFirst(8);
+//        deque2.addFirst(9);
+//        System.out.println(deque2.get(0));
+//        System.out.println(deque2.get(1));
+//        System.out.println(deque2.get(2));
+//        System.out.println(deque2.get(3));
+//        System.out.println(deque2.get(4));
+//        System.out.println(deque2.get(5));
+//        System.out.println(deque2.get(6));
+//        System.out.println(deque2.get(7));
+//        System.out.println(deque2.get(8));
+//        System.out.println(deque2.get(9));
+//        System.out.println(deque2.get(10));
+//        *//*
+//        *//*
+//        ArrayDeque<Integer> deque3 = new ArrayDeque<>();
+//        System.out.println(deque3.isEmpty());
+//        deque3.addLast(10);
+//        System.out.println(deque3.isEmpty());
+//        *//*
+//
+//        *//*
+//        ArrayDeque<Integer> deque4 = new ArrayDeque<>();
+//        deque4.addLast(0);
+//        deque4.addLast(1);
+//        deque4.addLast(2);
+//        deque4.addLast(3);
+//        deque4.addLast(4);
+//        deque4.addFirst(5);
+//        deque4.addFirst(6);
+//        deque4.addFirst(7);
+//        deque4.addFirst(8);
+//        deque4.printDeque();
+//        *//*
+//
+//
+//        ArrayDeque<Integer> deque5 = new ArrayDeque<>();
+//        deque5.addFirst(10);
+//        deque5.printDeque();
+//        deque5.removeLast();
+//        System.out.println(deque5.isEmpty());
+//    }*/
 
 //    public static void main(String[] args) {
 //        ArrayDeque<Integer> deque = new ArrayDeque<>();
@@ -238,6 +236,38 @@ public class ArrayDeque<T> {
 //        deque.addFirst(1);
 //        deque.addFirst(2);
 //        deque.removeFirst();
+//        deque.printDeque();
+//    }
+//    public static void main(String[] args) {
+//
+//        ArrayDeque<Integer> deque = new ArrayDeque<>();
+//        deque.addLast(0);
+//        deque.get(0);
+//        deque.printDeque();
+//        deque.removeLast();
+//        deque.addLast(3);
+//        deque.addLast(4);
+//        deque.addLast(5);
+//        deque.printDeque();
+//        deque.removeFirst();
+//        deque.removeFirst();
+//        deque.printDeque();
+//        deque.addFirst(8);
+//        deque.addLast(9);
+//        deque.printDeque();
+//        System.out.println(deque.get(0));
+//        deque.removeLast();
+//        deque.printDeque();
+//        deque.removeFirst();
+//        deque.printDeque();
+//        deque.addFirst(13);
+//        deque.printDeque();
+//        deque.addFirst(14);
+//        deque.printDeque();
+//        deque.removeFirst();
+//        deque.printDeque();
+//        System.out.println(deque.get(0));
+//        deque.removeLast();
 //        deque.printDeque();
 //    }
 
