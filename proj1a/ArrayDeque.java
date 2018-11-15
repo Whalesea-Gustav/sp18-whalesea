@@ -53,7 +53,6 @@ public class ArrayDeque<T> {
                     temp, 0, this.nextLast);
             this.nextFirst += dif;
             if (this.nextFirst == capacity - 1) {
-                return;
             } else {
                 System.arraycopy(this.items, this.nextFirst - dif + 1,
                         temp, this.nextFirst + 1, capacity - 1 - this.nextFirst);
@@ -270,5 +269,43 @@ public class ArrayDeque<T> {
 //        deque.removeLast();
 //        deque.printDeque();
 //    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        deque.addFirst(0);
+        deque.printDeque();
+        deque.get(0);
+        deque.get(0);
+        deque.removeFirst();
+        deque.printDeque();
+        deque.addLast(4);
+        deque.printDeque();
+        deque.removeLast();
+        deque.printDeque();
+        deque.addFirst(6);
+        deque.printDeque();
+        deque.get(0);
+        deque.addLast(8);
+        deque.printDeque();
+        deque.addFirst(9);
+        deque.printDeque();
+        deque.addFirst(10);
+        deque.printDeque();
+        deque.addLast(11);
+        deque.printDeque();
+        deque.removeLast();
+        deque.printDeque();
+        deque.addFirst(13);
+        deque.printDeque();
+        deque.addLast(14);
+        deque.printDeque();
+        deque.get(2);
+        deque.addFirst(16);
+        deque.printDeque();
+        System.out.println(deque.get(3));
+        deque.addLast(18);
+        deque.printDeque();
+        deque.removeFirst();
+    }
 
 }
