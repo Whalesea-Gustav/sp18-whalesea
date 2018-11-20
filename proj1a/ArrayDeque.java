@@ -148,7 +148,8 @@ public class ArrayDeque<T> {
         return result;
     }
     private void nextFirstAddOne() {
-        if (this.nextFirst == this.items.length - 1) { this.nextFirst = 0;
+        if (this.nextFirst == this.items.length - 1) {
+            this.nextFirst = 0;
         } else {
             this.nextFirst++;
         }
