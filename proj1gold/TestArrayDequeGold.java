@@ -2,13 +2,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class TestArrayDeque {
+public class TestArrayDequeGold {
     ArrayDequeSolution<Integer> solution = new ArrayDequeSolution<>();
     StudentArrayDeque<Integer> studentVersion = new StudentArrayDeque<>();
 
     @Test
     public void test() {
-        for (int i = 0; i < 10; i += 1) {
+        for (int i = 0; i < 100; i += 1) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.25) {
                 solution.addFirst(i);
