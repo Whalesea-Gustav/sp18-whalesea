@@ -3,45 +3,39 @@ import org.junit.Test;
 
 
 public class TestArrayDequeGold {
-    ArrayDequeSolution<Integer> solution = new ArrayDequeSolution<>();
-    StudentArrayDeque<Integer> studentVersion = new StudentArrayDeque<>();
-
+    public static Integer expected;
+    public static Integer actual;
     @Test
-    public void test() {
-        for (int i = 0; i < 100; i += 1) {
+    public void testStudentArrayDequeAndArrayDequeSolution(){
+        StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
+        ArrayDequeSolution<Integer> sad2 = new ArrayDequeSolution<>();
+
+        for (int i = 0; i < 10; i += 1) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
-            if (numberBetweenZeroAndOne < 0.25) {
-                solution.addFirst(i);
-                studentVersion.addFirst(i);
-                assertEquals("AddFirst Error\n RandomNumber:" + " " + i,
-                        solution.get(0), studentVersion.get(0));
-            } else if (numberBetweenZeroAndOne < 0.5) {
-                solution.addLast(i);
-                studentVersion.addLast(i);
-                assertEquals("AddLast Error\n RandomNumber:" + " " + i,
-                        solution.get(solution.size()-1), studentVersion.get(studentVersion.size()-1));
-            } else if ((solution.size() == 0 || studentVersion.size() == 0)
-                    && numberBetweenZeroAndOne < 0.75) {
-                solution.addFirst(i);
-                studentVersion.addFirst(i);
-                assertEquals("AddFirst Error\n RandomNumber:" + " " + i,
-                        solution.get(0), studentVersion.get(0));
-            } else if ((solution.size() == 0 || studentVersion.size() == 0)
-                    && numberBetweenZeroAndOne < 1) {
-                solution.addLast(i);
-                studentVersion.addLast(i);
-                assertEquals("AddLast Error\n RandomNumber:" + " " + i,
-                        solution.get(solution.size()-1), studentVersion.get(studentVersion.size()-1));
-            } else if (numberBetweenZeroAndOne < 0.75) {
-                assertEquals("removeFirst Error:\n RandomNumber:" + " " + i,
-                        solution.removeFirst(), studentVersion.removeFirst());
-                solution.removeFirst();
-                studentVersion.removeFirst();
+
+            if (numberBetweenZeroAndOne < 0.5) {
+                sad1.addLast(i);
+                sad2.addLast(i);
             } else {
-                solution.removeLast();
-                studentVersion.removeLast();
+                sad1.addFirst(i);
+                sad2.addFirst(i);
             }
         }
+
+        for (int i = 0; i < 10; i += 1) {
+            double numberBetweenZeroAndOne = StdRandom.uniform();
+
+            if (numberBetweenZeroAndOne < 0.5) {
+                expected = sad1.removeLast();
+                actual = sad2.removeLast();
+            } else {
+                expected = sad1.removeFirst();
+                actual = sad2.removeFirst();
+            }
+            assertEquals(expected +" not equal to "+ actual, expected, actual);
+        }
     }
+
+
 
 }
